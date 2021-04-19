@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveTraining, purposeeTraining } from '../actions/dashboardActions';
-import { logout } from '../actions/userActions';
+import {
+    saveTraining,
+    purposeeTraining,
+} from '../Redux/dashboard/dashboardActions';
+import { logout } from '../Redux/user/userActions';
 
-import { fetchUserData } from '../actions/userActions';
+import { fetchUserData } from '../Redux/user/userActions';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
 
-    const userInfo = useSelector(store => store.auth);
-    console.log(userInfo);
+    const userStore = useSelector(store => store.user);
+
     useEffect(() => {
-        console.log('entro');
-        dispatch(fetchUserData);
-    }, [dispatch, userInfo]);
+        dispatch(fetchUserData());
+    }, [dispatch]);
 
     const handleSaveTraining = () => {
         dispatch(saveTraining('objectTraining'));
@@ -25,6 +27,15 @@ const Dashboard = () => {
         dispatch(logout());
     };
 
+    function renderProposalTraining() {
+        if (userStore.loading) {
+            return <h2>Loading training...</h2>;
+        } else if (!userStore.info) {
+            return <h2>No info avaliable...</h2>;
+        } else {
+            return <p>{JSON.stringify(userStore.info)}</p>;
+        }
+    }
     return (
         <>
             <h1>Dashboard</h1>
@@ -33,7 +44,7 @@ const Dashboard = () => {
                 Proponer para próximo entrno
             </button>
             <button onClick={handleLogout}>Logout</button>
-            {/* {userInfo ? userInfo.map(item => <p>{item}</p>) : <p>weo weo</p>} */}
+            {renderProposalTraining()}
         </>
     );
 };

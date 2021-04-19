@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/userActions';
+import { login } from '../Redux/user/userActions';
 
 import { Redirect } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const isAuthenticated = useSelector(store => store.auth.isAuthenticated);
+    const isAuthenticated = useSelector(store => store.user.isAuthenticated);
 
     const handleSubmit = event => {
         event.preventDefault();
