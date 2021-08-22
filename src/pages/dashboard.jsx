@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PurposeTraining from '../components/PurposeTraining.jsx';
 import {
     saveTraining,
-    purposeeTraining,
+    purposeNextTraining,
 } from '../Redux/dashboard/dashboardActions';
 import { logout } from '../Redux/user/userActions';
 
@@ -21,7 +22,7 @@ const Dashboard = () => {
         dispatch(saveTraining('objectTraining'));
     };
     const handlePurposeTraining = () => {
-        dispatch(purposeeTraining('otherObjectTraining'));
+        dispatch(purposeNextTraining('otherObjectTraining'));
     };
     const handleLogout = () => {
         dispatch(logout());
@@ -33,7 +34,7 @@ const Dashboard = () => {
         } else if (!userStore.info) {
             return <h2>No info avaliable...</h2>;
         } else {
-            return <p>{JSON.stringify(userStore.info)}</p>;
+            return <PurposeTraining />;
         }
     }
     return (

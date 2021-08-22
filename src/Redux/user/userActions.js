@@ -39,7 +39,6 @@ export const fetchUserData = () => {
             // const userData = await axios.get(
             //     'https://jsonplaceholder.typicode.com/posts'
             // );
-            console.log(userData);
             dispatch(getUserDataSuccess(userData.data));
         } catch (error) {
             dispatch(getUserDataError(error));
