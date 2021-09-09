@@ -40,7 +40,9 @@ const Dashboard = () => {
     return (
         <>
             <h1>Dashboard</h1>
-            <button onClick={handleSaveTraining}>Guardar entreno</button>
+            <button onClick={handleSaveTraining}>
+                Registrar nuevo entreno
+            </button>
             <button onClick={handlePurposeTraining}>
                 Proponer para próximo entrno
             </button>
