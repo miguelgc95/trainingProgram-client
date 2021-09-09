@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -13,38 +14,21 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-// Modal.setAppElement('#root');
+Modal.setAppElement('#root');
 
-const SaveTrainingModal = () {
-    let subtitle;
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        console.log('yo');
-        subtitle.style.color = '#f00';
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
+const SaveTrainingModal = props => {
+    console.log(props);
     return (
         <div>
-            <button onClick={openModal}>Open Modal</button>
             <Modal
-                isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
-                onRequestClose={closeModal}
+                isOpen={props.isOpen}
+                onAfterOpen={props.afterOpenModal}
+                onRequestClose={props.closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-                <button onClick={closeModal}>close</button>
+                {/* <h2 ref={_subtitle => (props.subtitle = _subtitle)}>Hello</h2> */}
+                <button onClick={props.closeModal}>close</button>
                 <div>I am a modal</div>
                 <form>
                     <input />
@@ -56,7 +40,7 @@ const SaveTrainingModal = () {
             </Modal>
         </div>
     );
-}
+};
 
 // ReactDOM.render(<App />, appElement);
-export default SaveTrainingModal
+export default SaveTrainingModal;

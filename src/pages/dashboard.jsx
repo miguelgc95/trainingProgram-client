@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PurposeTraining from '../components/PurposeTraining.jsx';
+
+import Modal from 'react-modal';
+
 import {
     saveTraining,
     purposeNextTraining,
@@ -8,6 +11,8 @@ import {
 import { logout } from '../Redux/user/userActions';
 
 import { fetchUserData } from '../Redux/user/userActions';
+
+import SaveTrainingModal from '../components/modal.jsx';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -37,12 +42,36 @@ const Dashboard = () => {
             return <PurposeTraining />;
         }
     }
+
+    // let subtitle;
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const afterOpenModal = () => {
+        // references are now sync'd and can be accessed.
+        console.log('yo');
+        // subtitle.style.color = '#f00';
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
     return (
         <>
             <h1>Dashboard</h1>
-            <button onClick={handleSaveTraining}>
-                Registrar nuevo entreno
-            </button>
+            <button onClick={openModal}>Registrar nuevo entreno</button>
+
+            <SaveTrainingModal
+                isOpen={isOpen}
+                closeModal={closeModal}
+                afterOpenModal={afterOpenModal}
+                // subtitle={subtitle}
+            />
+
             <button onClick={handlePurposeTraining}>
                 Proponer para próximo entrno
             </button>
