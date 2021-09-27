@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import DayTraining from './dayTraining';
+import DayTraining from '../DayTraining/DayTraining';
 
 const PurposeTraining = () => {
     const purposeTraining = useSelector(

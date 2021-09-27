@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PurposeTraining from '../components/PurposeTraining.jsx';
+import PurposeTraining from '../../components/PurposeTraining/PurposeTraining.jsx';
 
 import Modal from 'react-modal';
 
 import {
     saveTraining,
     purposeNextTraining,
-} from '../Redux/dashboard/dashboardActions';
-import { logout } from '../Redux/user/userActions';
+} from '../../Redux/dashboard/dashboardActions';
+import { logout } from '../../Redux/user/userActions';
 
-import { fetchUserData } from '../Redux/user/userActions';
+import { fetchUserData } from '../../Redux/user/userActions';
 
-import SaveTrainingModal from '../components/modal.jsx';
+import SaveTrainingModal from '../../components/Modal/Modal.jsx';
 
 const Dashboard = () => {
     const dispatch = useDispatch();

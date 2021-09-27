@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import React from 'react';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
-import Login from "./pages/login";
-import Dashboard from "./pages/dashboard";
-import InitalWeek from "./pages/initalWeek";
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
+import InitalWeek from './pages/InitialWeek/InitalWeek';
 
 function App() {
     return (
