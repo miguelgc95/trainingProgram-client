@@ -19,7 +19,6 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const SaveTrainingModal = props => {
-    console.log(props);
     return (
         <div>
             <Modal
@@ -58,5 +57,4 @@ const SaveTrainingModal = props => {
     );
 };
 
-// ReactDOM.render(<App />, appElement);
 export default SaveTrainingModal;

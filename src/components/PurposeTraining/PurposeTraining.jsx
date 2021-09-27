@@ -4,7 +4,7 @@ import DayTraining from '../DayTraining/DayTraining';
 
 const PurposeTraining = () => {
     const purposeTraining = useSelector(
-        store => store.user.info.purposeTraining
+        store => store.userReducer.info.purposeTraining
     );
 
     return (

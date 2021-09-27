@@ -1,6 +1,5 @@
 import React from 'react';
 
-// const DayTraining = ({ day, morning, lunch, evening, night }) => {
 const DayTraining = ({ day }) => {
     return (
         <>

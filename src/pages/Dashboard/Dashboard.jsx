@@ -7,17 +7,17 @@ import Modal from 'react-modal';
 import {
     saveTraining,
     purposeNextTraining,
-} from '../../Redux/dashboard/dashboardActions';
-import { logout } from '../../Redux/user/userActions';
+} from '../../redux/dashboard/dashboard-actions';
+import { logout } from '../../redux/user/user-actions';
 
-import { fetchUserData } from '../../Redux/user/userActions';
+import { fetchUserData } from '../../redux/user/user-actions';
 
 import SaveTrainingModal from '../../components/Modal/Modal.jsx';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
 
-    const userStore = useSelector(store => store.user);
+    const userReducer = useSelector(store => store.userReducer);
 
     useEffect(() => {
         dispatch(fetchUserData());
@@ -34,9 +34,9 @@ const Dashboard = () => {
     };
 
     function renderProposalTraining() {
-        if (userStore.loading) {
+        if (userReducer.loading) {
             return <h2>Loading training...</h2>;
-        } else if (!userStore.info) {
+        } else if (!userReducer.info) {
             return <h2>No info avaliable...</h2>;
         } else {
             return <PurposeTraining />;
